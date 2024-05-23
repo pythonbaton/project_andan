@@ -1,0 +1,31 @@
+from requests import Session
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+import json
+
+API_KEY = '506cb9e8-b659-4dc2-a629-2d7ffcaf4519'
+
+url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/new'
+parameters = {
+    'start': '1',
+    'limit': '5000',
+    'convert': 'USD'
+}
+headers = {
+    'Accepts': 'application/json',
+    'X-CMC_PRO_API_KEY': API_KEY,
+}
+
+session = Session()
+session.headers.update(headers)
+
+try:
+    response = session.get(url, params=parameters)
+    data = response.json()
+    
+    token_data = data.get('data', [])
+    token_ids = [str(token['id']) for token in token_data]
+
+    print(','.join(token_ids))
+
+except (ConnectionError, Timeout, TooManyRedirects) as e:
+    print(e)
