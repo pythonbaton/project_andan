@@ -1,0 +1,18 @@
+def split_ids(ids_string, group_size=500):
+    # Разбиваем строку на отдельные айди
+    ids = ids_string.split(',')
+    
+    # Разбиваем айди на группы по group_size
+    groups = [ids[i:i + group_size] for i in range(0, len(ids), group_size)]
+    
+    # Форматируем вывод
+    result = []
+    for index, group in enumerate(groups):
+        result.append(f"Группа {index + 1}: {', '.join(group)}")
+    
+    return "\n\n".join(result)
+
+# Вбиваем наши значения
+ids_string = ""
+formatted_output = split_ids(ids_string)
+print(formatted_output)
