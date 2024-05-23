@@ -12,4 +12,4 @@
 Результаты возвращаем в файл results_name_price.txt
 
 Далее воспользуемся вторым гет запросом, чтобы получить информацию о самой высокой исторической цене, о самой низкой исторической цене и о начальной цене. Для этого используем код в файле historical_prices code
-Результаты возвращаем в файл results_historical_prices.txt
+Результаты возвращаем в файл results_historical_prices.txt в формае id:open_price:all_time_high_price:all_time_low_price
