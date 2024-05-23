@@ -1,0 +1,41 @@
+from requests import Session
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+import json
+
+API_KEY = '506cb9e8-b659-4dc2-a629-2d7ffcaf4519'
+token_ids = [] # тут вставляем наши айдишники
+
+url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
+parameters = {
+    'id': ','.join(map(str, token_ids)),
+    'convert': 'USD'
+}
+headers = {
+    'Accepts': 'application/json',
+    'X-CMC_PRO_API_KEY': API_KEY,
+}
+
+session = Session()
+session.headers.update(headers)
+
+try:
+    response = session.get(url, params=parameters)
+    data = response.json()
+
+    token_data = data.get('data', {})
+    result = []
+
+    for token_id in token_ids:
+        token = token_data.get(str(token_id), {})
+        if token:
+            name = token.get('name', 'N/A')
+            symbol = token.get('symbol', 'N/A')
+            price = token.get('quote', {}).get('USD', {}).get('price', 'N/A')
+
+            result.append(f"{token_id}:{name}:{symbol}:{price}")
+
+    for line in result:
+        print(line)
+
+except (ConnectionError, Timeout, TooManyRedirects) as e:
+    print(e)
