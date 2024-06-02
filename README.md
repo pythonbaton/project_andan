@@ -1,5 +1,5 @@
 # project_andan
-![Доброе утро, криптоинвесторы]([https://github.com/{username}/{repository}/raw/{branch}/{path}/image.png](https://github.com/pythonbaton/project_andan/blob/main/IMG_5234.WEBP))
+![Доброе утро, криптоинвесторы]([[https://github.com/{username}/{repository}/raw/{branch}/{path}/image.png](https://github.com/pythonbaton/project_andan/blob/main/IMG_5234.WEBP)](https://github.com/pythonbaton/project_andan/blob/main/dur.jpg))
 Для начала спарсим id токенов, которые были последние добавлены на CoinMarketCap. Лимит на парсинг стоит в 5000, поэтому парсим 5000 айдишников. Код, который использовался для парсинга, находится в файле id_of_tokens.ipynb (сам код находится в id_of_tokens code)
 
 Полученные айдишники сохраняем в текстовый файл. Файл добавлен и называется id_of_tokens_list.txt
